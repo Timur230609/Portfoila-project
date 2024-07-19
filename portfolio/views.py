@@ -49,7 +49,11 @@ class BlogDetailView(HitCountDetailView):
 import math
 
 def blog_view(request):
-    blogs = Blog.objects.all()
+    c = request.GET.get("category")
+    if c:
+        blogs = Blog.objects.filter(category_id=int(c)).order_by('-created_date')
+    else:
+        blogs = Blog.objects.all().order_by('-created_date')
     blog_count = len(blogs)
     count_obj = 5
     page_count = math.ceil(blog_count/count_obj)

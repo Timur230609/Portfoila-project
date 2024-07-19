@@ -23,7 +23,7 @@ class Portfolio(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='Team/images')
-    director = models.CharField(max_length=50)
+    direktor = models.CharField(max_length=50)
 
     def __str__(self):
         return f"{self.name} {self.director}"
